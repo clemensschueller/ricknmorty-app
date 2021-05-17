@@ -1,5 +1,6 @@
 import './App.css'
 import { useEffect, useState } from 'react'
+import Card from './Card'
 
 export default App
 
@@ -17,12 +18,20 @@ function App() {
   console.log(characters)
   return (
     <div className="App">
-      {characters.map(character => (
-        <section>
-          <h2>{character.name}</h2>
-          <span>{character.status}</span>
-        </section>
-      ))}
+      {characters.map(
+        ({ name, species, image, id, gender, status, origin, location }) => (
+          <Card
+            key={id}
+            name={name}
+            species={species}
+            gender={gender}
+            image={image}
+            status={status}
+            origin={origin.name}
+            location={location.name}
+          />
+        )
+      )}
     </div>
   )
 }
